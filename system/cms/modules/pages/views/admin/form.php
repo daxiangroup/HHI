@@ -190,6 +190,11 @@
 					<label for="is_home"><?php echo lang('pages.is_home_label');?></label>
 					<div class="input"><?php echo form_checkbox('is_home', 1, $page->is_home == 1, 'id="is_home"'); ?></div>
 				</li>
+
+				<li class="<?php echo alternator('even', ''); ?>">
+					<label for="page_type">Page Type</label>
+					<div class="input"><?php echo form_dropdown('page_type', $page_types, $page->page_type); ?></div>
+				</li>
 			</ul>
 
 			</fieldset>

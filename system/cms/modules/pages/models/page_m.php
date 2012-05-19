@@ -314,6 +314,7 @@ class Page_m extends MY_Model
 			'rss_enabled'		=> (int) ! empty($input['rss_enabled']),
 			'comments_enabled'	=> (int) ! empty($input['comments_enabled']),
 			'is_home'		=> (int) ! empty($input['is_home']),
+			'page_type'		=> $input['page_type'],
 			'status'		=> $input['status'],
 			'created_on'		=> now(),
 			'order'		=> now()
@@ -380,6 +381,7 @@ class Page_m extends MY_Model
 			'rss_enabled'		=> (int) ! empty($input['rss_enabled']),
 			'comments_enabled'	=> (int) ! empty($input['comments_enabled']),
 			'is_home'			=> (int) ! empty($input['is_home']),
+			'page_type'			=> $input['page_type'],
 			'status'			=> $input['status'],
 			'updated_on'		=> now()
 		));

@@ -365,6 +365,8 @@ class Admin extends Admin_Controller {
 			$parent_page 	= $this->page_m->get($parent_id);
 		}
 
+		$page->page_type = 0;
+
 		// Assign data for display
 		$data['page'] = & $page;
 		$data['parent_page'] = & $parent_page;
@@ -531,6 +533,11 @@ class Admin extends Admin_Controller {
 	{
 		$page_layouts = $this->page_layouts_m->get_all();
 		$this->template->page_layouts = array_for_select($page_layouts, 'id', 'title');
+
+		$page_types[] = array('id'=>'0', 'title'=>'Page');
+		$page_types[] = array('id'=>'1', 'title'=>'Did You Know');
+		$page_types[] = array('id'=>'2', 'title'=>'Featured Service');
+		$this->template->page_types = array_for_select($page_types, 'id', 'title');
 
 		// Load navigation list
 		$this->load->model('navigation/navigation_m');
