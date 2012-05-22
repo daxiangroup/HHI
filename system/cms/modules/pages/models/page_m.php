@@ -454,4 +454,31 @@ class Page_m extends MY_Model
 											)
 									  ) > 0;
 	}
+
+	public function did_you_know($num = 1)
+	{
+		$this->db->select('default_page_chunks.body');
+		//$this->db->from('default_pages');
+		$this->db->join('default_page_chunks', 'default_pages.id = default_page_chunks.page_id');
+		$this->db->where('default_pages.page_type', '1');
+		$this->db->order_by('default_pages.id', 'RAND');
+		$result = $this->db->get('default_pages');
+
+		$result = $this->db->query("SELECT default_page_chunks.body
+		                 FROM default_pages
+		                 INNER JOIN default_page_chunks ON default_pages.id = default_page_chunks.page_id
+		                 WHERE default_pages.page_type = 1
+                                 AND default_pages.status = 'live'
+		                 ORDER BY RAND()
+                                 LIMIT 1");
+
+                if ( ! $result->num_rows())
+                {
+		  return '';
+                }
+
+		$result = $result->result();
+
+		return $result[0]->body;
+	}
 }
